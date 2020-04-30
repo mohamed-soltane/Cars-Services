@@ -1,3 +1,16 @@
 .Nitem{
     padding-right: 200px;
+    
+}
+.navbrand{
+    font-size: 25px;
+    color: rgb(23, 66, 48);
+    font-family: "Archivo", sans-serif;
+}
+.navbar{
+    background: #4d9ffc;
+
+}
+.Nlink{
+    color: black;
 }
