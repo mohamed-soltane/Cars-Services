@@ -1,0 +1,57 @@
+.card-img,
+.card-img-bottom,
+.card-img-top {
+  height: 100px;
+  width:  70px;
+  border-radius: 200px;
+  margin: auto;
+}
+
+.card {
+    margin: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 6px;
+    padding: 1rem;
+    overflow: hidden;
+    background: white;
+  }
+  
+.card-img{
+    border-radius: 20%;
+}
+.card-title{
+    text-align: center;
+}
+
+.rating {
+    margin-bottom: 12px;
+    color: #eac11d;
+    text-align: center;
+  }
+  
+  .rating .fa,
+  .fas {
+    font-weight: 900;
+  }
+  .rating.fa,
+  .far,
+  .fas {
+    font-family: "Font Awesome 5 Free";
+  }
+  .fa,
+  .fab,
+  .fal,
+  .far,
+  .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+  }
+  .fa-star:before {
+    content: "\F005";
+  }
+  
