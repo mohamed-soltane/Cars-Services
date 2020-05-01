@@ -2,7 +2,8 @@ import React from 'react';
 import Seif from '../../Images/seiff.jpg';
 import './Employe.css';
 
-const Employe = () => {
+const Employe = (props) => {
+    const { Id, name, email, services } = props;
     return ( 
         <div>
             <div className="card" style={{width: '13rem;'}}>
@@ -16,12 +17,12 @@ const Employe = () => {
                         <i className="fas fa-star"></i>
                         <i className="far fa-star"></i>
                     </div>
-                    <p className="card-text mb-0">Reviews</p>
-                    <p className="card-text mb-0">Reviews</p>
-                    <p className="card-text mb-0">Reviews</p>
-                    <p className="card-text mb-0">Reviews</p>
+                    <p className="card-text mb-0">Id: {Id}</p>
+                    <p className="card-text mb-0">Name: {name}</p>
+                    <p className="card-text mb-0">Email: {email}</p>
+                    <p className="card-text mb-0">Services: {services}</p>
                    
-                    <button  onClick="{}" className="btn btn-primary" >
+                    <button  onClick="{}" className="btn btn-secondary mt-4" >
                      Add Reviews
                     </button>
                 </div>
