@@ -1,0 +1,14 @@
+.card-img,
+.card-img-bottom,
+.card-img-top {
+  height: 300px;
+}
+.card-body h5,
+p {
+  color: #222222;
+  font-weight: 580;
+}
+.card{
+    width:50%;
+    margin: auto;
+}

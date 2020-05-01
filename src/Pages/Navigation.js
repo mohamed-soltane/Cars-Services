@@ -1,14 +1,8 @@
 
 import React, { useState } from 'react';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from 'reactstrap';
+ Link
+} from 'react-router-dom';
 import './Navigation.css';
 
 const Example = (props) => {
@@ -17,31 +11,56 @@ const Example = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar className="navbar" expand="md" m-5>
-        <NavbarBrand className="navbrand" href="/">Cars Services</NavbarBrand>
-        <NavbarToggler  onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem className="Nitem">
-              <NavLink className="Nlink"  href="/">Home</NavLink>
-            </NavItem >
-            <NavItem className="Nitem">
-              <NavLink className="Nlink" href="/Services">Services</NavLink>
-            </NavItem>
-            <NavItem className="Nitem">
-              <NavLink  className="Nlink" href="/Employes">Employes</NavLink>
-            </NavItem>
-            <NavItem >
-              <NavLink  className="Nlink" href="/login">login</NavLink>
-            </NavItem>
-            
-          </Nav>
-         
-        </Collapse>
-      </Navbar>
+    <div className="Nav-1">
+      <nav className="navbar navbar-expand-lg  sticky-top">
+        <Link className="navbar-brand " to="/">
+          <b>e</b><b>S</b>top
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item active">
+              <Link className="nav-link" to="/">
+                Home <span className="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/Services">
+                Services
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/Employes">
+                Employes
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/Contact">
+                Contact
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Login
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
     </div>
   );
 }
+
 
 export default Example;

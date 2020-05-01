@@ -1,12 +1,11 @@
 import React from 'react';
-import ServiceItem from "../Components/ServiceItem";
+import Seif from '../Images/seiff.jpg';
+import './ServicesItem.css';
 
-
-
-const Services = () => {
+const ServiceItem = () => {
     return ( 
         <div>
-            <ServiceItem />
+            
         </div>
      );
 }
