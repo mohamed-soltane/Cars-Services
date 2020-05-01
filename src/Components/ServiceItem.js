@@ -5,7 +5,7 @@ import './ServicesItem.css';
 const ServiceItem = () => {
     return ( 
         <div>
-            
+           
         </div>
      );
 }

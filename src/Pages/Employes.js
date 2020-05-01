@@ -1,10 +1,11 @@
 import React from 'react';
+import Employe from '../Components/Employe';
 
 const Employes = () => {
     return ( 
         <div>
-            <p>Hello From Employes</p>
-        </div>
+        <Employe />
+    </div>
      );
 }
  
