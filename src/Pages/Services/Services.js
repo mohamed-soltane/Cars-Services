@@ -10,18 +10,39 @@ class Services extends Component {
   state = { 
     services: [],
     newServiceModal: false,
+    editServiceModal: false,
     newServiceData: {
+      id: '',
       name: '',
       email: '',
       carM: '',
       service: '',
       employe: ''
     },
+    editServiceData: {
+      id: '',
+      name: '',
+      email: '',
+      carM: '',
+      service: '',
+      employe: ''
+    }
   }
   togglenewServiceModal(){
     this.setState({
       newServiceModal : !this.state.newServiceModal
     })
+  }
+  toggleEditServiceModal(){
+    this.setState({
+      editServiceModal : !this.state.editServiceModal
+    })
+  }
+  editService(id, name, email, carM, service, employe){
+    this.setState({
+      editServiceData: {id, name, email, carM, service, employe}, editServiceModal: !this.state.editServiceModal
+    })
+    
   }
   addService() {
     axios.post('http://localhost:3000/services', this.state.newServiceData).then((res) => {
@@ -30,6 +51,7 @@ class Services extends Component {
       this.setState({
         services, newServiceModal: false,
          newServicekData: {
+          id: '',
           name: '',
           email: '',
           carM: '',
@@ -40,9 +62,40 @@ class Services extends Component {
 
     })
   }
+  updateService() {
+    let {id, name, email, carM, service, employe} = this.state.editServiceData
+    axios.put('http://localhost:3000/services/' + this.state.editServiceData.id, {
+      id, name, email, carM, service, employe
+    }).then((res) => {
+      this._refreshServices();
+    })
+
+    this.setState({
+      editServiceModal : !this.state.editServiceModal,
+      editServiceData: {
+        id: '',
+        name: '',
+        email: '',
+        carM: '',
+        service: '',
+        employe: ''
+      }
+    })
+
+  }
+
+  deleteBook(id) {
+    
+    axios.delete('http://localhost:3000/services/' + id).then((response) => {
+      this._refreshServices();
+    });
+  }
 
 
   componentDidMount() {
+    this._refreshServices()
+  }
+  _refreshServices() {
     axios.get('http://localhost:3000/services')
     .then((response) => {
       this.setState({
@@ -56,7 +109,7 @@ class Services extends Component {
       <React.Fragment>
         <div className=" row-button">
           <button  onClick={this.togglenewServiceModal.bind(this)} className="btn btn-secondary mt-4" >
-              Submit Service
+              Claim Service
           </button>
         </div>
         
@@ -99,7 +152,7 @@ class Services extends Component {
           </FormGroup>
           <FormGroup >
             <Label for="service">Service</Label>
-            <Input  id="service" placeholder="Select your Employe .." value= {this.state.newServiceData.service} onChange={e =>{
+            <Input  id="service" placeholder="Select your Employe .."value= {this.state.newServiceData.service} onChange={e =>{
                 let {newServiceData} = this.state;
                 newServiceData.service = e.target.value;
                 this.setState({
@@ -133,6 +186,70 @@ class Services extends Component {
             <button color="secondary" onClick={this.togglenewServiceModal.bind(this)}>Cancel</button>
           </ModalFooter>
         </Modal>
+        <Modal isOpen={this.state.editServiceModal} toggle={this.toggleEditServiceModal.bind(this)} >
+          <ModalHeader toggle={this.toggleEditServiceModal.bind(this)}>Update book</ModalHeader>
+          <ModalBody>
+            <FormGroup>
+                <Label for="name">name</Label>
+                <Input id="name" placeholder="Enter a  book name .." value= {this.state.editServiceData.name} onChange={e =>{
+                let {editServiceData} = this.state;
+                editServiceData.name = e.target.value;
+                this.setState({
+                    editServiceData
+                })
+                console.log(editServiceData)
+                }}/>
+            </FormGroup>
+            <FormGroup>
+                <Label for="email">email</Label>
+                <Input id="email" placeholder="enter a  email .." value= {this.state.editServiceData.email} onChange={e =>{
+                let {editServiceData} = this.state;
+                editServiceData.email = e.target.value;
+                this.setState({
+                    editServiceData
+                })
+                console.log(editServiceData)
+                }}/>
+            </FormGroup>
+            <FormGroup>
+                <Label for="carM">carM</Label>
+                <Input id="carM" placeholder="enter a  carM .." value= {this.state.editServiceData.carM} onChange={e =>{
+                let {editServiceData} = this.state;
+                editServiceData.carM = e.target.value;
+                this.setState({
+                    editServiceData
+                })
+                console.log(editServiceData)
+                }}/>
+            </FormGroup>
+            <FormGroup>
+                <Label for="service">service</Label>
+                <Input id="service" placeholder="enter a  service .." value= {this.state.editServiceData.service} onChange={e =>{
+                let {editServiceData} = this.state;
+                editServiceData.service = e.target.value;
+                this.setState({
+                    editServiceData
+                })
+                console.log(editServiceData)
+                }}/>
+            </FormGroup>
+            <FormGroup>
+                <Label for="employe">employe</Label>
+                <Input id="employe" placeholder="enter a  employe .." value= {this.state.editServiceData.employe} onChange={e =>{
+                let {editServiceData} = this.state;
+                editServiceData.employe = e.target.value;
+                this.setState({
+                    editServiceData
+                })
+                console.log(editServiceData)
+                }}/>
+            </FormGroup>
+          </ModalBody>
+          <ModalFooter>
+            <button color="primary" onClick={this.updateService.bind(this)}>Update Book</button>{' '}
+            <button color="secondary" onClick={this.toggleEditServiceModal.bind(this)}>Cancel</button>
+          </ModalFooter>
+      </Modal>
 
      
       <div className="row">
@@ -146,6 +263,8 @@ class Services extends Component {
               carM={service.carM}
               service={service.service}
               employe={service.employe}
+              editService={this.editService.bind(this, service.id, service.name, service.email, service.carM, service.service, service.employe,)}
+              
               />
             </div>
         })}
