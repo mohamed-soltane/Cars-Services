@@ -1,40 +1,38 @@
 import React, { Component } from 'react';
 import Employe from '../../Components/Employe/Employe';
+import {Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input} from 'reactstrap';
+
 import './Employes.css';
+import axios from 'axios';
+
 
 
 class Employes extends Component {
     state = { 
-        employes: [
-       {
-         id: 'u1',
-         name: 'Jack',
-         email: 'Jack@gmail.com',
-         services: '5 Services'     
-       },
-       {
-        id: 'u1',
-        name: 'Jack',
-        email: 'Jack@gmail.com',
-        services: '5 Services'     
-      },
-      {
-        id: 'u1',
-        name: 'Jack',
-        email: 'Jack@gmail.com',
-        services: '5 Services'     
-      },
-      
-       {
-        id: 'u1',
-        name: 'Jack',
-        email: 'Jack@gmail.com',
-        services: '5 Services'     
-      }
-     ]
-     }
+        employes: [],
+    }
+
+     componentDidMount() {
+      this._refreshEmployes()
+    }
+    _refreshEmployes() {
+      axios.get('http://localhost:3000/employes')
+      .then((response) => {
+        this.setState({
+          employes: response.data
+        })
+      })
+    }
      render() {
+      
        return(
+        <React.Fragment>
+        <div className=" row-button">
+        <button  onClick={""} className="btn btn-secondary mt-4" >
+            Add Employe
+        </button>
+        
+      </div>
          <div className="row">
    
          <ul className="employes-list">
@@ -50,7 +48,10 @@ class Employes extends Component {
            })}
          </ul>
          </div>
+         </React.Fragment>
        );
      };
    }
+   
+
 export default Employes;

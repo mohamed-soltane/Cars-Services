@@ -6,10 +6,10 @@ const Employe = (props) => {
     const { Id, name, email, services } = props;
     return ( 
         <div>
-            <div className="card" style={{width: '13rem;'}}>
+            <div className="card">
                 <img src={Seif} className="card-img-top" alt="..." />
                 <div className="card-body">
-                    <h5 className="card-title">Soltane Seifallah</h5>
+                    <h5 className="card-title_employe">Soltane Seifallah</h5>
                     <div className="rating">
                         <i className="fas fa-star"></i>
                         <i className="fas fa-star"></i>
@@ -22,7 +22,7 @@ const Employe = (props) => {
                     <p className="card-text mb-0">Email: {email}</p>
                     <p className="card-text mb-0">Services: {services}</p>
                    
-                    <button  onClick="{}" className="btn btn-secondary mt-4" >
+                    <button  onClick={``} className="Breview" >
                      Add Reviews
                     </button>
                 </div>

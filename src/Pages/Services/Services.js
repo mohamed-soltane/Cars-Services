@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ServiceItem from "../../Components/ServiceItem/ServiceItem";
 import './Services.css';
-import { Table, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input} from 'reactstrap';
+import {Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Label, Input} from 'reactstrap';
 import axios from 'axios';
  
 
@@ -115,7 +115,7 @@ class Services extends Component {
         
 
         <Modal isOpen={this.state.newServiceModal} toggle={this.togglenewServiceModal.bind(this)}>
-          <ModalHeader toggle={this.togglenewServiceModal.bind(this)}>Add Service</ModalHeader>
+          <ModalHeader toggle={this.togglenewServiceModal.bind(this)} >Claim Service</ModalHeader>
           <ModalBody>
           <FormGroup>
             <Label for="name">name</Label>
@@ -186,6 +186,8 @@ class Services extends Component {
             <button color="secondary" onClick={this.togglenewServiceModal.bind(this)}>Cancel</button>
           </ModalFooter>
         </Modal>
+
+
         <Modal isOpen={this.state.editServiceModal} toggle={this.toggleEditServiceModal.bind(this)} >
           <ModalHeader toggle={this.toggleEditServiceModal.bind(this)}>Update book</ModalHeader>
           <ModalBody>

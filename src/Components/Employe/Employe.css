@@ -13,15 +13,16 @@
     border-radius: 6px;
     padding: 1rem;
     overflow: hidden;
-    background: white;
+    background: #242E49;
+    ;
   }
   
 .card-img{
     border-radius: 20%;
 }
-.card-title{
+.card-title_employe{
     text-align: center;
-    color: black;
+    color: white;
 }
 
 .rating {
@@ -55,4 +56,13 @@
   .fa-star:before {
     content: "\F005";
   }
+  .Breview{
+     margin-left: 20%;
+     margin-top: 20px;
+     border-radius: 5px;
+     background-color: rgb(249, 249, 253);
+  }
+  .card-text{
+    color: white;
+}
   

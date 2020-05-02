@@ -11,7 +11,7 @@ const ServiceItem = props => {
         <div>
             <div className="card" >
                 <div className="card-body">
-                    <h5 className="card-title ">Active Service</h5>
+                    <h5 className="card-title_service ">Active Service</h5>
                     <p className="card-text ">ID : {ID}</p>
                     <p className="card-text ">Name : {name}</p>
                     <p className="card-text ">Email: {email} </p>
