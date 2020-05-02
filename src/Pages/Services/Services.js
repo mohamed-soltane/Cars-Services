@@ -84,7 +84,7 @@ class Services extends Component {
 
   }
 
-  deleteBook(id) {
+  deleteService(id) {
     
     axios.delete('http://localhost:3000/services/' + id).then((response) => {
       this._refreshServices();
@@ -119,7 +119,7 @@ class Services extends Component {
           <ModalBody>
           <FormGroup>
             <Label for="name">name</Label>
-            <Input id="name" placeholder="Enter a your name .." value= {this.state.newServiceData.name} onChange={e =>{
+            <Input id="name" placeholder="Enter  your name .." value= {this.state.newServiceData.name} onChange={e =>{
               let {newServiceData} = this.state;
               newServiceData.name = e.target.value;
               this.setState({
@@ -152,7 +152,7 @@ class Services extends Component {
           </FormGroup>
           <FormGroup >
             <Label for="service">Service</Label>
-            <Input  id="service" placeholder="Select your Employe .."value= {this.state.newServiceData.service} onChange={e =>{
+            <Input  id="service" placeholder="How we can help you .."value= {this.state.newServiceData.service} onChange={e =>{
                 let {newServiceData} = this.state;
                 newServiceData.service = e.target.value;
                 this.setState({
@@ -171,7 +171,7 @@ class Services extends Component {
        
           <FormGroup>
             <Label for="employe">employe</Label>
-            <Input id="employe" placeholder="Rate this book .." value= {this.state.newServiceData.employe} onChange={e =>{
+            <Input id="employe" placeholder="Choose your employe .." value= {this.state.newServiceData.employe} onChange={e =>{
               let {newServiceData} = this.state;
               newServiceData.employe = e.target.value;
               this.setState({
@@ -264,7 +264,7 @@ class Services extends Component {
               service={service.service}
               employe={service.employe}
               editService={this.editService.bind(this, service.id, service.name, service.email, service.carM, service.service, service.employe,)}
-              
+              deleteService={this.deleteService.bind(this, service.id)}
               />
             </div>
         })}
