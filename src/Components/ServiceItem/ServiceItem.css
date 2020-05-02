@@ -17,3 +17,12 @@
     text-align: center;
     color: rgb(69, 199, 69) !important;
 }
+.buttons{
+  display: flex;
+  
+}
+.btn{
+  width:100px;
+  margin:15px;
+  font-size: 13px;
+}

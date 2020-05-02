@@ -8,13 +8,14 @@ const ServiceItem = props => {
         <div>
             <div className="card" >
                 <div className="card-body">
-                    <h5 className="card-title ">Active claim</h5>
+                    <h5 className="card-title ">Active Service</h5>
                     <p className="card-text ">ID : {ID}</p>
                     <p className="card-text ">Name : {name}</p>
                     <p className="card-text ">Email: {email} </p>
                     <p className="card-text" >Car: {carM}</p>
                     <p className="card-text" >Service: {service}</p>
                     <p className="card-text" >Employe: {employe}</p>
+                   
                 </div>
             </div> 
         </div>
