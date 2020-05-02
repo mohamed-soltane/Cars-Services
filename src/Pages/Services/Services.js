@@ -1,61 +1,32 @@
 import React, { Component } from 'react';
 import ServiceItem from "../../Components/ServiceItem/ServiceItem";
 import './Services.css';
+import axios from 'axios';
  
 
 
 class Services extends Component {
   state = { 
-     services: [
-    {
-      id: 'p1',
-      name: 'Samir',
-      email: 'Samir@gmail.com',
-      carM: 'Toyota Corrolla',
-      service: 'Oil Change',
-      employe: 'u1'
-    },
-    {
-      id: 'p1',
-      name: 'Samir',
-      email: 'Samir@gmail.com',
-      carM: 'Toyota Corrolla',
-      service: 'Oil Change',
-      employe: 'u1'
-    },
-    {
-      id: 'p1',
-      name: 'Samir',
-      email: 'Samir@gmail.com',
-      carM: 'Toyota Corrolla',
-      service: 'Oil Change',
-      employe: 'u1'
-    },
-    {
-      id: 'p1',
-      name: 'Samir',
-      email: 'Samir@gmail.com',
-      carM: 'Toyota Corrolla',
-      service: 'Oil Change',
-      employe: 'u1'
-    },
-    {
-      id: 'p2',
-      name: 'Samir',
-      email: 'Samir@gmail.com',
-      carM: 'Honda Civic',
-      service: 'Brakes',
-      employe: 'u1'
-    }
-  ]
+    services: []
+  }
+
+
+  componentDidMount() {
+    axios.get('http://localhost:3000/services')
+    .then((response) => {
+      this.setState({
+        services: response.data
+      })
+    })
   }
   render(){
+    console.log(this.state.services)
     return(
       <div className="row">
 
       <ul className="services-list">
         {this.state.services.map(service => {
-          return <div className={"col-12  col-md-6 col-lg-4"}><ServiceItem
+          return <div className={"col-12  col-md-6 col-lg-4"} key={service.id}><ServiceItem
                   key={service.id}
                   id={service.id}
                   name={service.name}

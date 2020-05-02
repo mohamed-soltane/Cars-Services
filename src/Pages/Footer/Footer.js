@@ -27,6 +27,7 @@ function Footer(props) {
                         <a className="btn btn-social-icon btn-google" href="http://youtube.com/"><i className="fa fa-youtube" /></a> 
                     </div>
                     <div className="contact col-sm-4 text-center">
+                             <h5>Call or Email us at</h5>
                         <a role="button" className="btn " href="tel:+12065551234"><i className="fa fa-phone" /> 1-206-555-1234</a><br />
                         <a role="button" className="btn " href="mailto:notreal@notreal.co"><i className="fa fa-envelope-o" /> campsites@nucamp.co</a>
                     </div>

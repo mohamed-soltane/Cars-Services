@@ -10,7 +10,6 @@ const ServiceItem = props => {
                 <div className="card-body">
                     <h5 className="card-title ">Active claim</h5>
                     <p className="card-text ">ID : {ID}</p>
-
                     <p className="card-text ">Name : {name}</p>
                     <p className="card-text ">Email: {email} </p>
                     <p className="card-text" >Car: {carM}</p>

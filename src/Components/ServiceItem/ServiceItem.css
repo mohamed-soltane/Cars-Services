@@ -10,11 +10,10 @@
 .card{
     
     width:300px;
-    
-    
+    margin-bottom: 1rem!important;  
 }
 
 .card-title{
     text-align: center;
-    color: rgb(69, 199, 69);
+    color: rgb(69, 199, 69) !important;
 }

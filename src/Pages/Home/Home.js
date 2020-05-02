@@ -6,7 +6,7 @@ import './Home.css';
 const Home = () => {
     return ( 
         <React.Fragment>
-        <div>
+        <div className="home-body">
            <img className="imag"  src={Logo} alt="picture"/>
         </div>
         <div className="pub">

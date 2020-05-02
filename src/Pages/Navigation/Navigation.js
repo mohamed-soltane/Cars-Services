@@ -1,15 +1,11 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
  Link
 } from 'react-router-dom';
 import './Navigation.css';
 
 const Example = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
-
   return (
     <div className="Nav-1">
       <nav className="navbar navbar-expand-lg  sticky-top">
@@ -32,7 +28,7 @@ const Example = (props) => {
           <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
               <Link className="nav-link" to="/">
-                Home <span className="sr-only">(current)</span>
+                Home 
               </Link>
             </li>
             <li className="nav-item">
@@ -46,7 +42,7 @@ const Example = (props) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/Contact">
+              <Link className="nav-link" to="/">
                 Contact
               </Link>
             </li>
@@ -61,6 +57,4 @@ const Example = (props) => {
     </div>
   );
 }
-
-
 export default Example;

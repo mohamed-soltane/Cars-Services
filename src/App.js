@@ -22,7 +22,6 @@ function App() {
     <Route exact path="/Services" component={Services} />
     <Route path="/Employes" component={Employes} />
     <Route path="/Employes/:EmployeID" component={EmployeServices} />
-
     <Footer />
   </Router>
   );

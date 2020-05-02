@@ -1,6 +1,10 @@
+.home-body{
+    margin-top: 0;
+}
+
 .imag{
     width:100%;
-    height: 350px;
+    height: 400px;
     margin: 0;
     border: none;
 }
