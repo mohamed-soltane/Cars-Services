@@ -37,8 +37,8 @@ const Example = (props) => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/Employes">
-                Employes
+              <Link className="nav-link" to="/Employees">
+                Employees
               </Link>
             </li>
             <li className="nav-item">

@@ -12,9 +12,12 @@
   bottom: 0;
   width: 100%;
 }
-  .h5_footer{
-      color: #f7da96;
-  }
+ .social h5{
+    color:#f7da96
+ }
+ .links h5{
+    color:#f7da96
+ }
   ul li a{
       color: white;
   }
@@ -31,7 +34,7 @@
 .social a :focus {
     color: #f7da96;
 }
-.contact a :hover{
+.contact h5,a :hover{
     color: #f7da96;
     
 }

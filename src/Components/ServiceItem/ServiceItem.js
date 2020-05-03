@@ -5,7 +5,7 @@ import './ServiceItem.css';
 
 const ServiceItem = props => {
 
-    const { ID, name, email, carM, service, employe } = props
+    const { ID, name, email, carM, service } = props
     const {  editService, deleteService} = props
     return ( 
         <div>
@@ -17,7 +17,8 @@ const ServiceItem = props => {
                     <p className="card-text ">Email: {email} </p>
                     <p className="card-text" >Car: {carM}</p>
                     <p className="card-text" >Service: {service}</p>
-                    <p className="card-text" >Employe: {employe}</p>
+                    
+                    
                     <div className="buttons">
                     <button  onClick = { ( )=>editService()} className="btn btn1 btn-secondary" >
                      Edit

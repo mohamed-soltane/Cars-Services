@@ -4,8 +4,8 @@ import Navigation from "./Pages/Navigation/Navigation";
 import Header from "./Pages/Header/Header";
 import Footer from "./Pages/Footer/Footer";
 import Services from "./Pages/Services/Services";
-import Employes from "./Pages/Employes/Employes";
-import EmployeServices from "./Pages/EmployeServices/EmployeServices";
+import Employees from "./Pages/Employees/Employees";
+import EmployeeServices from "./Pages/EmployeServices/EmployeeServices";
 
 import Home from "./Pages/Home/Home";
 
@@ -20,8 +20,8 @@ function App() {
     <Navigation />
     <Route exact path="/" component={Home} />
     <Route exact path="/Services" component={Services} />
-    <Route path="/Employes" component={Employes} />
-    <Route path="/Employes/:EmployeID" component={EmployeServices} />
+    <Route path="/Employees" component={Employees} />
+    <Route path=":employeeId/Services" component={EmployeeServices} />
     <Footer />
   </Router>
   );

@@ -1,10 +1,10 @@
-.card-img,
-.card-img-bottom,
+
 .card-img-top {
-  height: 100px;
+  height: 85px;
   width:  70px;
-  border-radius: 200px;
-  margin: auto;
+  border-radius: 35%;
+  margin-left: 35%;
+  
 }
 
 .card {

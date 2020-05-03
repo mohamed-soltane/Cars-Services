@@ -9,6 +9,7 @@ import axios from 'axios';
 class Services extends Component {
   state = { 
     services: [],
+    employees: [],
     newServiceModal: false,
     editServiceModal: false,
     newServiceData: {
@@ -17,7 +18,9 @@ class Services extends Component {
       email: '',
       carM: '',
       service: '',
-      employe: ''
+      employee: '',
+      employeeId: ''
+     
     },
     editServiceData: {
       id: '',
@@ -25,7 +28,7 @@ class Services extends Component {
       email: '',
       carM: '',
       service: '',
-      employe: ''
+      employee: ''
     }
   }
   togglenewServiceModal(){
@@ -38,9 +41,9 @@ class Services extends Component {
       editServiceModal : !this.state.editServiceModal
     })
   }
-  editService(id, name, email, carM, service, employe){
+  editService(id, name, email, carM, service, employee){
     this.setState({
-      editServiceData: {id, name, email, carM, service, employe}, editServiceModal: !this.state.editServiceModal
+      editServiceData: {id, name, email, carM, service, employee}, editServiceModal: !this.state.editServiceModal
     })
     
   }
@@ -56,16 +59,19 @@ class Services extends Component {
           email: '',
           carM: '',
           service: '',
-          employe: ''
+          employee: '',
+         
+          
+         
         }
       })
 
     })
   }
   updateService() {
-    let {id, name, email, carM, service, employe} = this.state.editServiceData
+    let {id, name, email, carM, service, employee} = this.state.editServiceData
     axios.put('http://localhost:3000/services/' + this.state.editServiceData.id, {
-      id, name, email, carM, service, employe
+      id, name, email, carM, service, employee
     }).then((res) => {
       this._refreshServices();
     })
@@ -78,7 +84,7 @@ class Services extends Component {
         email: '',
         carM: '',
         service: '',
-        employe: ''
+        employee: ''
       }
     })
 
@@ -90,11 +96,20 @@ class Services extends Component {
       this._refreshServices();
     });
   }
-
-
+  
   componentDidMount() {
-    this._refreshServices()
+    this._refreshServices();
+    axios.get('http://localhost:3000/employees')
+    .then((response) => {
+      this.setState({
+        employees: response.data,
+       
+      })
+    })
   }
+  
+ 
+
   _refreshServices() {
     axios.get('http://localhost:3000/services')
     .then((response) => {
@@ -104,7 +119,8 @@ class Services extends Component {
     })
   }
   render(){
-    console.log(this.state.services)
+    console.log(this.state.services);
+    console.log("employees", this.state.employees)
     return(
       <React.Fragment>
         <div className=" row-button">
@@ -152,7 +168,7 @@ class Services extends Component {
           </FormGroup>
           <FormGroup >
             <Label for="service">Service</Label>
-            <Input  id="service" placeholder="How we can help you .."value= {this.state.newServiceData.service} onChange={e =>{
+            <Input  id="service" type="select" placeholder="How we can help you .."value= {this.state.newServiceData.service} onChange={e =>{
                 let {newServiceData} = this.state;
                 newServiceData.service = e.target.value;
                 this.setState({
@@ -160,25 +176,33 @@ class Services extends Component {
                 })
                 console.log(newServiceData)
               }}>
-              <option>Jack Robinson</option>
-              <option>Rose BEN</option>
-              <option>James GN</option>
-              <option>Jiff Alberto</option>
-              <option>Antonio Posboy</option>
+              <option>Oil Change</option>
+              <option>Brakes</option>
+              <option>Windows Broken</option>
+              <option>Deep Cleaning</option>
             </Input>
         
           </FormGroup>
        
           <FormGroup>
-            <Label for="employe">employe</Label>
-            <Input id="employe" placeholder="Choose your employe .." value= {this.state.newServiceData.employe} onChange={e =>{
+            <Label for="employee">employee</Label>
+            <Input id="employee" type="select" placeholder="Choose your employee .." value= {this.state.newServiceData.employeeId}
+            onChange={e =>{
               let {newServiceData} = this.state;
-              newServiceData.employe = e.target.value;
+              
+              newServiceData.employeeId = e.target.value
               this.setState({
-                newServiceData
+                  newServiceData
               })
-              console.log(newServiceData)
-            }}/> 
+              console.log("edit", newServiceData)
+              }}>
+               <option> ... </option>
+             {this.state.employees.map(employee =>
+                <option key={employee.id} value={employee.id} id={employee.id}>
+                    {employee.name}
+                </option> 
+            )}
+            </Input>
           </FormGroup>
           </ModalBody>
           <ModalFooter>
@@ -226,25 +250,36 @@ class Services extends Component {
             </FormGroup>
             <FormGroup>
                 <Label for="service">service</Label>
-                <Input id="service" placeholder="enter a  service .." value= {this.state.editServiceData.service} onChange={e =>{
+                <Input id="service" type="select" placeholder="enter a  service .." value= {this.state.editServiceData.service} onChange={e =>{
                 let {editServiceData} = this.state;
                 editServiceData.service = e.target.value;
                 this.setState({
                     editServiceData
                 })
                 console.log(editServiceData)
-                }}/>
+                }}>
+                  <option>Oil Change</option>
+                  <option>Brakes</option>
+                  <option>Windows Broken</option>
+                  <option>Deep Cleaning</option>
+                </Input>
             </FormGroup>
             <FormGroup>
-                <Label for="employe">employe</Label>
-                <Input id="employe" placeholder="enter a  employe .." value= {this.state.editServiceData.employe} onChange={e =>{
+                <Label for="employee">employee</Label>
+                <Input id="employee" type="select" placeholder="enter a  employee .." value= {this.state.editServiceData.employee} onChange={e =>{
                 let {editServiceData} = this.state;
-                editServiceData.employe = e.target.value;
+                editServiceData.employee = e.target.value;
                 this.setState({
                     editServiceData
                 })
                 console.log(editServiceData)
-                }}/>
+                }}>
+                {this.state.employees.map(employee =>
+                <option key={employee.id} value={employee.id} id={employee.id}>
+                    {employee.name}
+                </option> 
+            )}
+            </Input>
             </FormGroup>
           </ModalBody>
           <ModalFooter>
@@ -264,8 +299,9 @@ class Services extends Component {
               email={service.email}
               carM={service.carM}
               service={service.service}
-              employe={service.employe}
-              editService={this.editService.bind(this, service.id, service.name, service.email, service.carM, service.service, service.employe,)}
+              employee={service.employee}
+              employeeId={service.employeeId}
+              editService={this.editService.bind(this, service.id, service.name, service.email, service.carM, service.service, service.employee, service.employee)}
               deleteService={this.deleteService.bind(this, service.id)}
               />
             </div>
