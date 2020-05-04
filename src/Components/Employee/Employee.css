@@ -65,4 +65,10 @@
   .card-text{
     color: white;
 }
+.Bdelete{
+  border: none;
+  color: red;
+  background: none;
+  margin-right: 2%;
+}
   

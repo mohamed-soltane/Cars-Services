@@ -1,14 +1,40 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Seif from '../../Images/seiff.jpg';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
+
 import './Employee.css';
 
-const Employee = (props) => {
-    const { Id, name, email, services } = props;
+class Employee extends  Component  {
+    state = {
+        services:[]
+    }
+    componentDidMount(){
+        console.log(this.props)
+        const employeeId = this.props.id;
+        console.log('id', employeeId)
+
+        axios.get(`http://localhost:3000/employees/${employeeId}/?_embed=services`)
+        .then((response) => {
+          console.log('response', response.data)
+           this.setState({
+           
+            services: response.data.services,
+            
+          })
+          
+        })
+      }
+      
+    render(){
+    
+    
+    const { id, name, email} = this.props;
     return ( 
         <div>
             <div className="card">
-                <Link to={`/{:employeeId}/Services`}>
+                <button  onClick to={``} className="Bdelete" >X</button>
+                <Link to={`/Employees/${id}`}>
                 <img src={Seif} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title_employe">Soltane Seifallah</h5>
@@ -19,12 +45,14 @@ const Employee = (props) => {
                         <i className="fas fa-star"></i>
                         <i className="far fa-star"></i>
                     </div>
-                    <p className="card-text mb-0">Id: {Id}</p>
+                    
                     <p className="card-text mb-0">Name: {name}</p>
                     <p className="card-text mb-0">Email: {email}</p>
-                    <p className="card-text mb-0">Services: {services}</p>
+                    <p className="card-text mb-0">Services: {this.state.services.length}</p>
+
+                    
                    
-                    <button  onClick={``} className="Breview" >
+                    <button  onClick to={``} className="Breview" >
                      Add Reviews
                     </button>
                 </div>
@@ -33,5 +61,6 @@ const Employee = (props) => {
         </div>
      );
 }
+}
  
-export default Employee;
+export default withRouter(Employee);

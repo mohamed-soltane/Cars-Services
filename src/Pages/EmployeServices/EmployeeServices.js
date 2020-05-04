@@ -1,32 +1,52 @@
 import React, { Component} from 'react';
-import Employees from '../Employees/Employees';
+import ServiceItem from "../../Components/ServiceItem/ServiceItem";
 import './EmployeeServices.css';
-import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
 
 class EmployeeServices extends Component {
-state = { 
-  LoadedEmployee: []
-}
-
-componentDidMount(){
-  const employeeId = useParams().employeeId;
-  axios.get(`http://localhost:3000/services`)
-  .then((response) => {
-     this.setState({
-      LoadedEmploye: response.data
+  state = {
+    name:'',
+    services:[]
+  }
+  componentDidMount(){
+    const employeeId = this.props.match.params.employeeId;
+    console.log('id', employeeId)
+    axios.get(`http://localhost:3000/employees/${employeeId}/?_embed=services`)
+    .then((response) => {
+      console.log('response', response.data)
+       this.setState({
+        name: response.data.name,
+        services: response.data.services,
+        
+      })
+      
     })
-  })
-}
+  }
+  
 
- 
   render() {
   return ( 
-    <Employees items={this.state.LoadedEmployee} />
+    <React.Fragment>
+    <div className="row employee-services">
+      
+    {this.state.services.map(service => 
+    <div className="col-12  col-md-6 col-lg-4">
+      <ServiceItem 
+      id={service.id}
+      name={service.name}
+      email={service.email}
+      carM={service.carM}
+      service={service.service}
+      employee={service.employee}
+      />
+      </div>
+    )}
+    
+    </div>
+    </React.Fragment>
    );
 }
 }
- 
 export default EmployeeServices;

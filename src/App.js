@@ -20,8 +20,12 @@ function App() {
     <Navigation />
     <Route exact path="/" component={Home} />
     <Route exact path="/Services" component={Services} />
-    <Route path="/Employees" component={Employees} />
-    <Route path=":employeeId/Services" component={EmployeeServices} />
+    <Route exact path="/Employees/:employeeId" render={(props) => {
+       return <EmployeeServices {...props} /> }} />
+        
+    <Route exact path="/Employees" render={(props) => {
+       return <Employees {...props} /> }} />
+          
     <Footer />
   </Router>
   );

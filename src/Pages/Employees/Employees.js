@@ -15,7 +15,7 @@ class Employees extends Component {
           id: '',
           name: '',
           email: '',
-          services: ''
+          
         }
      }
      togglenewEmployeeModal(){
@@ -88,10 +88,6 @@ class Employees extends Component {
               console.log(newEmployeeData)
             }}/> 
           </FormGroup>
-          <FormGroup>
-            <Label for="services">services</Label>
-            
-          </FormGroup>
           </ModalBody>
           <ModalFooter>
             <button color="primary" onClick={this.addEmployee.bind(this)}>Add Employee</button>{' '}
@@ -108,7 +104,7 @@ class Employees extends Component {
                      id={employee.id}
                      name={employee.name}
                      email={employee.email}
-                     services={employee.services}                   
+                     {...this.props}                   
                      
                /> </div>
            })}
