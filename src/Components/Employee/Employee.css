@@ -65,10 +65,16 @@
   .card-text{
     color: white;
 }
-.Bdelete{
-  border: none;
-  color: red;
+button.Bdelete{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
   background: none;
-  margin-right: 2%;
+  border: none;
+  color: rgb(111, 112, 112);
+  font-size: 22px;
 }
   

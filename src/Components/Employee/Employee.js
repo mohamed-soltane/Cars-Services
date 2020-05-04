@@ -8,8 +8,8 @@ import './Employee.css';
 class Employee extends  Component  {
     state = {
         services:[]
-    }
-    componentDidMount(){
+    }  
+    Fetching(){
         console.log(this.props)
         const employeeId = this.props.id;
         console.log('id', employeeId)
@@ -27,13 +27,11 @@ class Employee extends  Component  {
       }
       
     render(){
-    
-    
-    const { id, name, email} = this.props;
+    const { id, name, email, deleteEmployee} = this.props;
     return ( 
         <div>
             <div className="card">
-                <button  onClick to={``} className="Bdelete" >X</button>
+                <button  onClick = {( )=>deleteEmployee()} className="Bdelete" >X</button>
                 <Link to={`/Employees/${id}`}>
                 <img src={Seif} className="card-img-top" alt="..." />
                 <div className="card-body">
@@ -53,7 +51,7 @@ class Employee extends  Component  {
                     
                    
                     <button  onClick to={``} className="Breview" >
-                     Add Reviews
+                        Add Reviews
                     </button>
                 </div>
               </Link>

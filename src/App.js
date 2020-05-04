@@ -25,8 +25,7 @@ function App() {
         
     <Route exact path="/Employees" render={(props) => {
        return <Employees {...props} /> }} />
-          
-    <Footer />
+    
   </Router>
   );
 }

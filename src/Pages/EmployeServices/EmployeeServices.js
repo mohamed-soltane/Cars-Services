@@ -29,21 +29,17 @@ class EmployeeServices extends Component {
   render() {
   return ( 
     <React.Fragment>
-    <div className="row employee-services">
-      
-    {this.state.services.map(service => 
-    <div className="col-12  col-md-6 col-lg-4">
-      <ServiceItem 
-      id={service.id}
-      name={service.name}
-      email={service.email}
-      carM={service.carM}
-      service={service.service}
-      employee={service.employee}
-      />
-      </div>
+    <div>
+      {this.state.services.map(service => 
+        <ServiceItem 
+        id={service.id}
+        name={service.name}
+        email={service.email}
+        carM={service.carM}
+        service={service.service}
+        
+        />
     )}
-    
     </div>
     </React.Fragment>
    );

@@ -39,7 +39,11 @@ class Employees extends Component {
   
       })
     }
-
+    deleteEmployee(id) {
+      axios.delete('http://localhost:3000/employees/' + id).then((response) => {
+        this._refreshEmployees();
+      });
+    }
 
      componentDidMount() {
       this._refreshEmployees()
@@ -53,6 +57,7 @@ class Employees extends Component {
         })
       })
     }
+    
      render() {
       console.log(this.state.employees, this.state.employeeId)
 
@@ -99,12 +104,14 @@ class Employees extends Component {
    
          <ul className="employes-list">
            {this.state.employees.map(employee => {
-             return <div className={"col-12  col-md-6 col-lg-4"}><Employee
+             return <div className={"col-12  col-md-6 col-lg-4"} key={employee.id}><Employee
                      key={employee.id}
                      id={employee.id}
                      name={employee.name}
                      email={employee.email}
-                     {...this.props}                   
+                     employee={employee.employee}
+                     deleteEmployee = {this.deleteEmployee.bind(this, employee.id)}
+                                       
                      
                /> </div>
            })}
