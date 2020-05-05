@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Navigation from "./Pages/Navigation/Navigation";
 import Header from "./Pages/Header/Header";
+import Footer from "./Pages/Footer/Footer";
+
 import Auth from "./Pages/Login/Auth";
 import Services from "./Pages/Services/Services";
 import Employees from "./Pages/Employees/Employees";
@@ -65,6 +67,7 @@ import './App.css';
         
     <Route exact path="/Employees" render={(props) => {
        return <Employees {...props} /> }} />
+      
     
   </Router>
   );

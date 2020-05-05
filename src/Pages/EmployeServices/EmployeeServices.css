@@ -1,5 +1,5 @@
-.employee-services{
-
+.employee-services_body{
+ 
  padding: 10px;
  width: 90%;
  max-width: 80rem;
@@ -7,3 +7,20 @@
  
  flex-wrap: wrap;
 }
+ h3{
+    display:block;
+    
+    margin-left: 40%;
+    font-size: 40px;
+}
+.card-empty{
+    margin: auto;
+    margin-top:50px;
+    margin-bottom:50px;
+    width:300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 6px;
+    padding: 1rem;
+    overflow: hidden;
+    background: white;
+  }

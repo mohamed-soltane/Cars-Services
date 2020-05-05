@@ -16,7 +16,7 @@ class Nav extends Component {
     <div className="Nav-1">
       <nav className="navbar navbar-expand-lg  sticky-top">
         <Link className="navbar-brand " to="/">
-          <b>e</b><b>S</b>top
+          <p><b>e</b><b>S</b>top</p>
         </Link>
         <button
           className="navbar-toggler"
@@ -47,11 +47,6 @@ class Nav extends Component {
             <li className="nav-item">
               <Link className="nav-link" to="/Employees">
                 Employees
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Contact
               </Link>
             </li>
             <li className="nav-item"><a className="nav-link" onClick={this.handleLogout}>Logout</a></li>

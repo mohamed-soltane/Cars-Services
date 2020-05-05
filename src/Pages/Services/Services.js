@@ -28,7 +28,8 @@ class Services extends Component {
       email: '',
       carM: '',
       service: '',
-      employee: ''
+      employee: '',
+      employeeId: ''
     }
   }
   togglenewServiceModal(){
@@ -41,9 +42,10 @@ class Services extends Component {
       editServiceModal : !this.state.editServiceModal
     })
   }
-  editService(id, name, email, carM, service, employee){
+  editService(id, name, email, carM, service, employee, employeeId){
     this.setState({
-      editServiceData: {id, name, email, carM, service, employee}, editServiceModal: !this.state.editServiceModal
+      editServiceData: {id, name, email, carM, service, employee, employeeId },
+      editServiceModal: !this.state.editServiceModal
     })
     
   }
@@ -55,7 +57,6 @@ class Services extends Component {
     service:  this.state.newServiceData.service,
     employeeId:  Number(this.state.newServiceData.employeeId),
   }
-   
     axios.post('http://localhost:3000/services', service).then((res) => {
       let {services} = this.state;
       services.push(res.data);
@@ -67,17 +68,24 @@ class Services extends Component {
           email: '',
           carM: '',
           service: '',
-          employee: ''
+          employee: '',
+          employeeId: ''
         }
       })
 
     })
   }
   updateService() {
-    let {id, name, email, carM, service, employee} = this.state.editServiceData
-    axios.put('http://localhost:3000/services/' + this.state.editServiceData.id, {
-      id, name, email, carM, service, employee
-    }).then((res) => {
+    const editService = {
+      id: this.state.editServiceData.id,
+      name: this.state.editServiceData.name,
+      email: this.state.editServiceData.email, 
+      carM:  this.state.editServiceData.carM,
+      service:  this.state.editServiceData.service,
+      employeeId:  Number(this.state.editServiceData.employeeId),
+    }
+    let {id} = this.state.editServiceData
+    axios.put(`http://localhost:3000/services/${id}` , editService).then((res) => {
       this._refreshServices();
     })
 
@@ -108,7 +116,7 @@ class Services extends Component {
     .then((response) => {
       this.setState({
         employees: response.data,
-        employeeId: response.data[0].id
+        
       })
     })
   }
@@ -126,9 +134,10 @@ class Services extends Component {
   render(){
     console.log(this.state.services);
     console.log("employees", this.state.employees)
+  
     return(
       <React.Fragment>
-        <div className=" row-button">
+         <div className=" row-button">
           <button  onClick={this.togglenewServiceModal.bind(this)} className="btn btn-secondary mt-4" >
               Claim Service
           </button>
@@ -199,7 +208,7 @@ class Services extends Component {
               this.setState({
                   newServiceData
               })
-              console.log("edit", newServiceData)
+              console.log("create", newServiceData)
               }}>
                <option> ... </option>
              {this.state.employees.map(employee =>
@@ -271,19 +280,21 @@ class Services extends Component {
             </FormGroup>
             <FormGroup>
                 <Label for="employee">employee</Label>
-                <Input id="employee" type="select" placeholder="enter a  employee .." value= {this.state.editServiceData.employee} onChange={e =>{
-                let {editServiceData} = this.state;
-                editServiceData.employee = e.target.value;
-                this.setState({
-                    editServiceData
-                })
-                console.log(editServiceData)
-                }}>
-                {this.state.employees.map(employee =>
-                <option key={employee.id} value={employee.id} id={employee.id}>
-                    {employee.name}
-                </option> 
-            )}
+                <Input id="employee" type="select" placeholder="enter a  employee .." value= {this.state.editServiceData.employeeId} 
+                  onChange={e =>{
+                  let {editServiceData} = this.state;
+                  editServiceData.employeeId = e.target.value;
+                  this.setState({
+                      editServiceData
+                  })
+                  console.log("edit",editServiceData)
+                  }}>
+                    <option> ... </option>
+                  {this.state.employees.map(employee =>
+                  <option key={employee.id} value={employee.id} id={employee.id}>
+                      {employee.name}
+                  </option> 
+                  )}
             </Input>
             </FormGroup>
           </ModalBody>

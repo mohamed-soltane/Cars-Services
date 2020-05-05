@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './auth.css';
 
+
 class Auth extends Component {
 
   // Set initial state

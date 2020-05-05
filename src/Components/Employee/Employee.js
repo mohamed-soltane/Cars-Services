@@ -7,24 +7,25 @@ import './Employee.css';
 
 class Employee extends  Component  {
     state = {
-        services:[]
+        services:[],
+       
     }  
-    Fetching(){
-        console.log(this.props)
-        const employeeId = this.props.id;
-        console.log('id', employeeId)
+    componentDidMount() {
+      console.log(this.props)
+      const employeeId = this.props.id;
+      console.log('id', employeeId)
 
-        axios.get(`http://localhost:3000/employees/${employeeId}/?_embed=services`)
-        .then((response) => {
-          console.log('response', response.data)
-           this.setState({
+      axios.get(`http://localhost:3000/employees/${employeeId}/?_embed=services`)
+      .then((response) => {
+        console.log('response', response.data)
+         this.setState({
            
-            services: response.data.services,
-            
-          })
+          services: response.data.services,
           
-        })
-      }
+        })})
+      console.log("services", this.state.services)
+    }
+  
       
     render(){
     const { id, name, email, deleteEmployee} = this.props;
@@ -35,7 +36,7 @@ class Employee extends  Component  {
                 <Link to={`/Employees/${id}`}>
                 <img src={Seif} className="card-img-top" alt="..." />
                 <div className="card-body">
-                    <h5 className="card-title_employe">Soltane Seifallah</h5>
+                    <h5 className="card-title_employe">{name}</h5>
                     <div className="rating">
                         <i className="fas fa-star"></i>
                         <i className="fas fa-star"></i>
@@ -46,7 +47,7 @@ class Employee extends  Component  {
                     
                     <p className="card-text mb-0">Name: {name}</p>
                     <p className="card-text mb-0">Email: {email}</p>
-                    <p className="card-text mb-0">Services: {this.state.services.length}</p>
+                    <p className="card-text mb-0">Services:{this.state.services.length}</p>
 
                     
                    

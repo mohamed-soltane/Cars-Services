@@ -28,6 +28,9 @@
     padding: 0 10px 5px;
     color:#f7da96;
   }
+  a.navbar-brand {
+    color:#f7da96;
+  }
  a.nav-link{
     color:white;
     font-family: "Raleway",sans-serif;
@@ -37,4 +40,8 @@
 
 .row {
   margin-bottom: 0!important;
+}
+li.nav-item{
+  color: white;
+
 }
