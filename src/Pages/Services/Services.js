@@ -48,7 +48,15 @@ class Services extends Component {
     
   }
   addService() {
-    axios.post('http://localhost:3000/services', this.state.newServiceData).then((res) => {
+   const service = {
+    name: this.state.newServiceData.name,
+    email: this.state.newServiceData.email, 
+    carM:  this.state.newServiceData.carM,
+    service:  this.state.newServiceData.service,
+    employeeId:  Number(this.state.newServiceData.employeeId),
+  }
+   
+    axios.post('http://localhost:3000/services', service).then((res) => {
       let {services} = this.state;
       services.push(res.data);
       this.setState({
@@ -59,10 +67,7 @@ class Services extends Component {
           email: '',
           carM: '',
           service: '',
-          employee: '',
-         
-          
-         
+          employee: ''
         }
       })
 
@@ -103,7 +108,7 @@ class Services extends Component {
     .then((response) => {
       this.setState({
         employees: response.data,
-       
+        employeeId: response.data[0].id
       })
     })
   }
@@ -198,7 +203,7 @@ class Services extends Component {
               }}>
                <option> ... </option>
              {this.state.employees.map(employee =>
-                <option key={employee.id} value={employee.id} id={employee.id}>
+                <option type="Number" key={employee.id} value={employee.id} id={employee.id}>
                     {employee.name}
                 </option> 
             )}

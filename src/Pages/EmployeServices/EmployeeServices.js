@@ -29,8 +29,10 @@ class EmployeeServices extends Component {
   render() {
   return ( 
     <React.Fragment>
-    <div>
+    <div className="row">
+    <div className="employee-services">
       {this.state.services.map(service => 
+     <div className={"col-12  col-md-4 col-lg-3"}>
         <ServiceItem 
         id={service.id}
         name={service.name}
@@ -39,10 +41,12 @@ class EmployeeServices extends Component {
         service={service.service}
         
         />
+        </div>
     )}
+    </div>
     </div>
     </React.Fragment>
    );
 }
 }
-export default EmployeeServices;
+export default EmployeeServices; 

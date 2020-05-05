@@ -1,11 +1,17 @@
 
-import React from 'react';
-import {
- Link
-} from 'react-router-dom';
+import React, {Component} from 'react';
+import {Link, withRouter } from 'react-router-dom';
 import './Navigation.css';
 
-const Example = (props) => {
+class Nav extends Component {
+  handleLogout = () => {
+    //clears user from localStorage and redirects to home page
+    this.props.clearUser();
+    this.props.history.push('/');
+    window.location.reload(false);
+
+}
+  render(){
   return (
     <div className="Nav-1">
       <nav className="navbar navbar-expand-lg  sticky-top">
@@ -31,6 +37,8 @@ const Example = (props) => {
                 Home 
               </Link>
             </li>
+            {(this.props.user) ? 
+              <>
             <li className="nav-item">
               <Link className="nav-link" to="/Services">
                 Services
@@ -46,15 +54,20 @@ const Example = (props) => {
                 Contact
               </Link>
             </li>
+            <li className="nav-item"><a className="nav-link" onClick={this.handleLogout}>Logout</a></li>
+            </>
+            :
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+             <Link className="nav-link" to="/auth">
                 Login
               </Link>
             </li>
+          }
           </ul>
         </div>
       </nav>
     </div>
   );
-}
-export default Example;
+}}
+
+export default withRouter(Nav);
