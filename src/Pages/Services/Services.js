@@ -299,7 +299,7 @@ class Services extends Component {
             </FormGroup>
           </ModalBody>
           <ModalFooter>
-            <button color="primary" onClick={this.updateService.bind(this)}>Update Book</button>{' '}
+            <button color="primary" onClick={this.updateService.bind(this)}>Update Service</button>{' '}
             <button color="secondary" onClick={this.toggleEditServiceModal.bind(this)}>Cancel</button>
           </ModalFooter>
       </Modal>
