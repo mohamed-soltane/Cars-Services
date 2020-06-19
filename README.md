@@ -1,9 +1,10 @@
-This project was bootstrapped with Create React App.
 
-Car Services Project
+# Car Services Project
+
 ![](images/car.PNG)
 
-Project
+## Project
+
 This project had me building a single-page, dynamic React application for a car service company.
 
 The user will only be able to view the homepage unless they are logged in. Once logged in, the user can view additional NavBar links for detailed information like cars information, the service they need, and employees.
